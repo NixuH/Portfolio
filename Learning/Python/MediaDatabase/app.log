@@ -1,0 +1,2 @@
+2026-01-26 21:31:55,675 [ERROR] AppLogger: invalid literal for int() with base 10: 'dfsdf'
+2026-01-26 21:32:17,508 [INFO] AppLogger: App exit
