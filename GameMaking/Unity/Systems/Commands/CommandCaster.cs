@@ -80,14 +80,8 @@ namespace Game.Commands
 
         public void Action(ref RaycastHit hit)
         {
-            if (currentCommand == null)
+            if (currentCommand == null || hit.collider == null)
                 return;
-
-            if (currentCommand.targetType != TargetType.Position && hit.collider == null)
-            {
-                Debug.LogError($"[CommandCaster] '{currentCommand.commandType}' needs an object target but the raycast hit nothing.");
-                return;
-            }
 
             var state = currentCommand.targetType == TargetType.Position
                 ? currentCommand.Action(hit.point, targetRot)
