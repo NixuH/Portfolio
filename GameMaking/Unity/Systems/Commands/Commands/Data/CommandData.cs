@@ -5,8 +5,6 @@ namespace Game.Commands
 {
     /// <summary>
     /// Shared data for all commands (building costs, build times, etc).
-    /// Stored as a ScriptableObject so values can be changed in the Inspector,
-    /// without touching code.
     /// </summary>
     [CreateAssetMenu(menuName = "Commands/Commands Data", fileName = "CommandsData")]
     public class CommandsData : ScriptableObject

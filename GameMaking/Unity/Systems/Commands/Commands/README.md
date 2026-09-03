@@ -10,6 +10,8 @@ Every player-triggered or AI-triggered action (moving a unit, placing a building
 Start -> [NeedAction] -> Execute -> [Wait] -> Finish / Cancel / Error
 ```
 
+`NeedAction` and `Wait` are optional states and are only used when required by the command.
+
 - **Start** — the command initializes itself and, if it doesn't need a target, runs immediately.
 - **NeedAction** — the command is waiting for the player to click a ground position or select a target.
 - **Execute** — runs every `FixedUpdate` while the command is active (e.g. a building preview following the cursor).
@@ -18,14 +20,14 @@ Start -> [NeedAction] -> Execute -> [Wait] -> Finish / Cancel / Error
 
 ## Core Classes
 
-| File | Responsibility |
-|---|---|
-| `Command.cs` | Abstract base class. Owns the lifecycle, exception-safe hooks, and coroutine-based waiting. |
-| `CommandCaster.cs` | `MonoBehaviour` that owns the currently active command, ticks passive commands, and forwards player input to whichever command is waiting for it. |
-| `CommandEnums.cs` | Shared enums: `CommandState`, `CallType`, `TargetType`, `WaitFailure`, `AfterWaitBehaviour`, `CommandType`. |
-| `CommandsData.cs` | `ScriptableObject` holding designer-editable data (building costs, prefabs, build times), looked up by `BuildKey`. |
-| `Build_Command.cs` | Concrete command: instantiates a building and waits out its construction time. |
-| `PlaceBuilding_Command.cs` | Concrete command: shows a semi-transparent preview that follows the cursor, then spawns a `Build_Command` on confirm. |
+| File                       | Responsibility                                                                                                                                    |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Command.cs`               | Abstract base class. Owns the lifecycle, exception-safe hooks, and coroutine-based waiting.                                                       |
+| `CommandCaster.cs`         | `MonoBehaviour` that owns the currently active command, ticks passive commands, and forwards player input to whichever command is waiting for it. |
+| `CommandEnums.cs`          | Shared enums: `CommandState`, `CallType`, `TargetType`, `WaitFailure`, `AfterWaitBehaviour`, `CommandType`.                                       |
+| `CommandsData.cs`          | `ScriptableObject` holding designer-editable data (building costs, prefabs, build times), looked up by `BuildKey`.                                |
+| `Build_Command.cs`         | Concrete command: instantiates a building and starts its construction.                                                                            |
+| `PlaceBuilding_Command.cs` | Concrete command: shows a semi-transparent preview that follows the cursor, then creates and starts a `Build_Command` on confirm.                 |
 
 ## Adding a New Command
 
@@ -37,7 +39,7 @@ Start -> [NeedAction] -> Execute -> [Wait] -> Finish / Cancel / Error
    - `OnEvent` — triggered externally by a specific game event.
 3. Pick a `TargetType` so `CommandCaster` knows what layer to raycast against and which `Action(...)` overload to call.
 4. If the command needs to pause (animations, timers, sequential steps), call `Wait(...)` with a queue of `Func<IEnumerator>` and an `AfterWaitBehaviour` describing what happens once the wait ends.
-5. Always release resources you allocate (spawned previews, temporary objects) in `Cleaning()` — check `state` first if the object should survive a successful `Finish()` (see `Build_Command.Cleaning()`).
+5. Always release resources you allocate (spawned previews, temporary objects) in `Cleaning()`.
 
 ## Known Gotchas
 

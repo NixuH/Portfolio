@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Game.Commands.CommandsData;
-using static Pathfinding.Util.RetainedGizmos;
 
 public class Build_Command : Game.Commands.Command
 {
@@ -48,14 +47,6 @@ public class Build_Command : Game.Commands.Command
                 buildData.prefab,
                 targetPosition,
                 targetRotation);
-
-        // Temporary demonstration of the command waiting lifecycle. Cammand Sends debug log onFinish
-        Wait(
-            new Queue<Func<IEnumerator>>(
-                new[] { new Func<IEnumerator>(() => WaitSecondsCoroutine(3)) } 
-            ),
-            WaitFailure.Error,
-            AfterWaitBehaviour.Finish);
 
         buildingInConstruction
             .GetComponent<Building>()
