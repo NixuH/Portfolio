@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/" />
+  <Project Path="taskmanagement.client/taskmanagement.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="TaskManagement.Server.Tests/TaskManagement.Server.Tests.csproj" />
+  <Project Path="TaskManagement.Server/TaskManagement.Server.csproj" />
+</Solution>

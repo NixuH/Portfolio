@@ -1,0 +1,88 @@
+#root {
+    width: 1126px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* dark mode as default */
+:root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #111111;
+    --border: #2e303a;
+    --accent: #c084fc;
+}
+
+/* overwrite as light mode*/
+@media (prefers-color-scheme: light) {
+    :root {
+        --text: #6b6375;
+        --text-h: #08060d;
+        --bg: #ffffff;
+        --border: #e5e4e7;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--bg);
+    color: var(--text);
+}
+
+button,
+input,
+textarea,
+select {
+    border: solid 2px;
+    border-radius: 2px;
+
+    border-color: gray;
+    margin: 2px;
+    font: inherit;
+}
+
+button:hover,
+input:hover,
+textarea:hover,
+select:hover {
+    border-color: black;
+    box-shadow: 0 0 8px var(--accent);
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: var(--text-h);
+    text-decoration: none;
+    transition: color 300ms ease, text-shadow 300ms ease;
+}
+
+a:hover {
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent);
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    color: var(--text-h);
+}
+
+p {
+    margin: 0;
+}
