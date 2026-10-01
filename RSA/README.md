@@ -1,9 +1,9 @@
-## Opis
+## Description
 
-Projekt implementujący RSA-2048 z własną arytmetyką na liczbach 2048-bitowych oraz algorytmem Pollard Rho do faktoryzacji kluczy. Zawiera również wielowątkowe testy wydajności i prostą komunikację klient-serwer z szyfrowaniem RSA.
+A project implementing RSA-2048 with custom arithmetic on 2048-bit numbers and the Pollard Rho algorithm for key factorization. It also includes multithreaded performance tests and simple client-server communication with RSA encryption.
 
-### Uwaga dotycząca kodu
+### Note on the code
 
-Repozytorium zawiera wybrane pliki projektu. `CommunicationHandler` nie jest mojego autorstwa, dlatego został pominięty w prezentowanej wersji repozytorium.
+The repository contains selected project files. `CommunicationHandler` is not my own work, so it has been omitted from the presented version of the repository.
 
-Uint2048 jest jedynie podstawową implementacją niezbędną do działania RSA.
+Uint2048 is only a basic implementation necessary for RSA to work, as the entire project was prepared as a demonstration of the encryption algorithm, not a production version.
