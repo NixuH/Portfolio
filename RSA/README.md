@@ -5,3 +5,5 @@ Projekt implementujący RSA-2048 z własną arytmetyką na liczbach 2048-bitowyc
 ### Uwaga dotycząca kodu
 
 Repozytorium zawiera wybrane pliki projektu. `CommunicationHandler` nie jest mojego autorstwa, dlatego został pominięty w prezentowanej wersji repozytorium.
+
+Uint2048 jest jedynie podstawową implementacją niezbędną do działania RSA.
